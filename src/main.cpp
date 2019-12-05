@@ -3,10 +3,14 @@
 #include "raylib.h"
 #include "Game.h"
 #include "scene/SceneManager.h"
+#include "ecs/Entity.h"
+#include "ecs/CubeComponent.h"
+#include "ecs/Component.h"
 
 //Initialize pointer to zero so that it can be initialized in first call to getInstance
 SceneManager *SceneManager::instance = 0;
-
+Entity entity;
+CubeComponent cube;
 int main(int argc, char const *argv[])
 {
 
@@ -16,7 +20,8 @@ int main(int argc, char const *argv[])
     game.Start();                  // Start will initialize all the game process
 
     SceneManager *sceneManager = sceneManager->Get_Instance();
-
+    entity.Add_Component<CubeComponent>();    
+    
     while (!WindowShouldClose()) // Detect window close button or ESC key
     {
 

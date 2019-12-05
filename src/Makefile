@@ -359,6 +359,9 @@ PROJECT_SOURCE_FILES ?= \
     main.cpp \
     Game.cpp \
     scene/SceneManager.cpp \
+    ecs/Entity.cpp \
+    ecs/Component.cpp \
+    ecs/CubeComponent.cpp
   
 
 
