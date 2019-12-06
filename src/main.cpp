@@ -20,11 +20,13 @@ int main(int argc, char const *argv[])
     game.Start();                  // Start will initialize all the game process
 
     SceneManager *sceneManager = sceneManager->Get_Instance();
-    entity.Add_Component<CubeComponent>();    
-    
+    entity.Add_Component<CubeComponent>();
+    entity.transform.position.x += 10.0;
     while (!WindowShouldClose()) // Detect window close button or ESC key
     {
-
+        entity.Update();
+        entity.transform.position.x += 10.0;
+        std::cout << entity.Get_Component<CubeComponent>().Get_Position().x << std::endl;
         game.Update(); // Update the game
         BeginDrawing();
         ClearBackground(BLACK);
@@ -33,6 +35,7 @@ int main(int argc, char const *argv[])
         EndDrawing();
     }
 
+    
     CloseWindow(); // Close window and OpenGL context
     return 0;
 }

@@ -92,7 +92,7 @@ public:
 
         component_array[Get_Component_Type_ID<T>()] = c;
         component_bitset[Get_Component_Type_ID<T>()] = true;
-
+        c->Start();
         return *c;
     }
 
@@ -101,6 +101,20 @@ public:
     {
         auto ptr(component_array[Get_Component_Type_ID<T>()]);
         return *static_cast<T *>(ptr);
+    }
+
+ 
+    void Update(){
+        for(auto& c :components){
+            c->Set_Position(transform.position);
+            c->Update();
+        }
+    }
+
+    void Render(){
+        for(auto& c: components){
+            c->Render();
+        }
     }
 };
 #endif // ENTITY_H
