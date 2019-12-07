@@ -1,15 +1,11 @@
 #include "Component.h"
 
-Component::Component(){}
-Component::~Component(){}
+Component::Component() {}
+Component::~Component() {}
 
-
-
-void Component::Set_Position(Vector3 mPosition){
+void Component::Update_Transform(Vector3 mPosition, Vector3 mRotation, Vector3 mScale)
+{
     position = mPosition;
+    rotation = mRotation;
+    scale = mScale;
 }
-
-Vector3 Component::Get_Position(){
-    return position;
-}
-

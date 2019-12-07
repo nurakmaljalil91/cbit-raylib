@@ -361,7 +361,7 @@ PROJECT_SOURCE_FILES ?= \
     scene/SceneManager.cpp \
     ecs/Entity.cpp \
     ecs/Component.cpp \
-    ecs/CubeComponent.cpp
+    ecs/Cube.cpp
   
 
 

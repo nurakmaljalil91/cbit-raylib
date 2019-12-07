@@ -9,7 +9,7 @@
 #include <array>
 #include "raylib.h"
 #include "Component.h"
-#include "CubeComponent.h"
+#include "Cube.h"
 
 using ComponentID = std::size_t;
 using Group = std::size_t;
@@ -36,22 +36,24 @@ using GroupBitSet = std::bitset<max_groups>;
 
 using ComponentArray = std::array<Component *, max_components>;
 
+// GameObject work as entity identifier
 struct GameObject
 {
-    const char *name;
-    const char *tag;
+    const char *name;      // name of the gameObject
+    const char *tag;       // tag for gameObject to be found
+    int layer = 0;         // check where the layer of the entity
+    bool is_active = true; // only update and render when the entity is active
 };
 
+// Transform act physical attributes saver
 struct ETransform
 {
-    Vector3 position = {0.0, 0.0, 0.0};
-
-    const char *ToString()
-    {
-        return "test";
-    }
+    Vector3 position = {0.0, 0.0, 0.0}; // position of the entity
+    Vector3 rotation = {0.0, 0.0, 0.0}; // rotation of the entity
+    Vector3 scale = {1.0, 1.0, 1.0};    // scale for the entity
 };
 
+// Class of entity
 class Entity
 {
 public:
@@ -59,13 +61,13 @@ public:
     ComponentBitSet component_bitset;
     GroupBitSet group_bitset;
 
-    GameObject gameObject;
-    ETransform transform;
+    GameObject gameObject; // GameObject of the entity
+    ETransform transform;  // Transform of the entity
 
-    std::vector<std::unique_ptr<Component>> components;
+    std::vector<std::unique_ptr<Component>> components; // all components attach to the entity
 
-    Entity();
-    virtual ~Entity();
+    Entity();          // Entity constructor
+    virtual ~Entity(); // Entity deconstructor
 
     bool Has_Group(Group mGroup)
     {
@@ -86,7 +88,7 @@ public:
     template <typename T, typename... TArgs>
     T &Add_Component(TArgs &&... mArgs)
     {
-        T *c(new T(std::forward<TArgs>(mArgs)...));
+        T *c(new T(std::forward<TArgs>(mArgs)...)); // Create the component
         std::unique_ptr<Component> uPtr{c};
         components.emplace_back(std::move(uPtr));
 
@@ -103,17 +105,27 @@ public:
         return *static_cast<T *>(ptr);
     }
 
- 
-    void Update(){
-        for(auto& c :components){
-            c->Set_Position(transform.position);
-            c->Update();
+    void Update()
+    {
+        if (gameObject.is_active)
+        {
+            for (auto &c : components)
+            {
+                // update the transform for the component
+                c->Update_Transform(transform.position, transform.rotation, transform.scale);
+                c->Update();
+            }
         }
     }
 
-    void Render(){
-        for(auto& c: components){
-            c->Render();
+    void Render()
+    {
+        if (gameObject.is_active)
+        {
+            for (auto &c : components)
+            {
+                c->Render();
+            }
         }
     }
 };

@@ -3,15 +3,18 @@
 #include "raylib.h"
 class Component
 {
-private:
+protected:
     Vector3 position;
+    Vector3 rotation;
+    Vector3 scale;
 
 public:
     Component();
     ~Component();
 
-    void Set_Position(Vector3 mPosition);
-    Vector3 Get_Position();
+   
+    void Update_Transform(Vector3 mPosition, Vector3 mRotation, Vector3 mScale);
+    
 
     virtual void Start() = 0;
     virtual void Update() = 0;
