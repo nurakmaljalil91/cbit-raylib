@@ -105,6 +105,12 @@ public:
         return *static_cast<T *>(ptr);
     }
 
+    void Update_Entity_Transform(Vector3 mPosition, Vector3 mRotation, Vector3 mScale)
+    {
+        transform.position = mPosition;
+        transform.rotation = mRotation;
+        transform.scale = mScale;
+    }
     void Update()
     {
         if (gameObject.is_active)
@@ -113,6 +119,7 @@ public:
             {
                 // update the transform for the component
                 c->Update_Transform(transform.position, transform.rotation, transform.scale);
+                //Update_Entity_Transform(c->position, c->rotation, c->scale);
                 c->Update();
             }
         }
@@ -126,6 +133,14 @@ public:
             {
                 c->Render();
             }
+        }
+    }
+
+    void Clear()
+    {
+        for (auto &c : components)
+        {
+            c->Clear();
         }
     }
 };
