@@ -1,10 +1,17 @@
 #ifndef COMPONENT_H
 #define COMPONENT_H
+
 #include "raylib.h"
+//#include "Entity.h"
+
+//class Entity;
+
 class Component
 {
 protected:
 public:
+    //Entity *entity;
+
     Vector3 position;
     Vector3 rotation;
     Vector3 scale;

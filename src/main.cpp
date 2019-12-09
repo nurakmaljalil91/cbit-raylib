@@ -8,9 +8,9 @@
 #include "ecs/Component.h"
 
 //Initialize pointer to zero so that it can be initialized in first call to getInstance
+//SceneManagerBase *SceneManagerBase::instance = 0;
+//Entity entity;
 SceneManagerBase *SceneManagerBase::instance = 0;
-Entity entity;
-
 int main(int argc, char const *argv[])
 {
 

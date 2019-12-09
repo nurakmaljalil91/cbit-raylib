@@ -360,11 +360,14 @@ PROJECT_SOURCE_FILES ?= \
     Game.cpp \
     scene/Scene.cpp \
     scene/SceneManager.cpp \
+    sandbox2d/MainMenuScene.cpp \
+    sandbox2d/PlayScene.cpp \
     ecs/Entity.cpp \
     ecs/Component.cpp \
     ecs/Cube.cpp \
     ecs/SpriteRenderer.cpp \
-    ecs/CharacterController.cpp
+    ecs/CharacterController.cpp 
+   
   
 # Define all object files from source files
 SRC = $(call rwildcard, *.c, *.h)

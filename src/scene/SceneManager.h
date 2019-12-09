@@ -1,8 +1,10 @@
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
+
 #include <iostream>
 #include <stack>
 #include "Scene.h"
+
 class SceneManagerBase
 {
 private:
@@ -10,10 +12,10 @@ private:
 
     SceneManagerBase(); // Private constructor so that no objects can be created.
 
-    std::stack<Scene*> scenes;
+    std::stack<Scene *> scenes; // stack of scenes
 
 public:
-    int scene_number;
+    int current_scene;
 
     virtual ~SceneManagerBase();
 
@@ -29,8 +31,11 @@ public:
     void Start();
     void Update();
     void Render();
+    void Clear();
 
-    void Load_Scene(int mScene);
-};
+    void Add_Scene(Scene* mScene);
+    
+    void Load_Scene(int mScene); // function to load scene
+};                               // class SceneManagerBase
 
 #endif // SCENEMANAGER_H

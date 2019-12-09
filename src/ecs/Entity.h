@@ -9,7 +9,7 @@
 #include <array>
 #include "raylib.h"
 #include "Component.h"
-#include "Cube.h"
+//#include "CharacterController.h"
 
 using ComponentID = std::size_t;
 using Group = std::size_t;
@@ -89,6 +89,7 @@ public:
     T &Add_Component(TArgs &&... mArgs)
     {
         T *c(new T(std::forward<TArgs>(mArgs)...)); // Create the component
+        //c->entity = this;
         std::unique_ptr<Component> uPtr{c};
         components.emplace_back(std::move(uPtr));
 
@@ -119,7 +120,11 @@ public:
             {
                 // update the transform for the component
                 c->Update_Transform(transform.position, transform.rotation, transform.scale);
-                //Update_Entity_Transform(c->position, c->rotation, c->scale);
+                // if (this->Has_Component<CharacterController>())
+                // {
+                //     Update_Entity_Transform(this->Get_Component<CharacterController>()->position, this->Get_Component<CharacterController>()->rotation, this->Get_Component<CharacterController>()->scale);
+                // }
+                
                 c->Update();
             }
         }
