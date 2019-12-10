@@ -18,6 +18,8 @@ void Game::Start()
 
     // player.Add_Component<SpriteRenderer>("../resources/Player/player_05.png");
     // player.Add_Component<CharacterController>();
+    SceneManager->Start();
+    
 }
 
 void Game::Update()

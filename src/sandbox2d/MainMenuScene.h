@@ -3,10 +3,15 @@
 
 #include <iostream>
 #include "../scene/Scene.h"
+#include "raylib.h"
+#include "../ecs/Entity.h"
+#include "../ecs/Button.h"
 
 class MainMenuScene : public Scene
 {
 public:
+    Entity start_button;
+
     MainMenuScene();
     ~MainMenuScene();
 

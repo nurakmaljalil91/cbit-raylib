@@ -17,7 +17,13 @@ int SceneManagerBase::Get_Scene_Number()
     return current_scene;
 }
 
-void SceneManagerBase::Start() {}
+void SceneManagerBase::Start()
+{
+    if (!scenes.empty())
+    {
+        scenes.top()->Start();
+    }
+}
 
 void SceneManagerBase::Update()
 {

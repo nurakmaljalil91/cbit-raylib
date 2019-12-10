@@ -366,7 +366,8 @@ PROJECT_SOURCE_FILES ?= \
     ecs/Component.cpp \
     ecs/Cube.cpp \
     ecs/SpriteRenderer.cpp \
-    ecs/CharacterController.cpp 
+    ecs/CharacterController.cpp \
+    ecs/Button.cpp
    
   
 # Define all object files from source files
