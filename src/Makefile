@@ -358,6 +358,7 @@ OBJ_DIR = obj
 PROJECT_SOURCE_FILES ?= \
     main.cpp \
     Game.cpp \
+    utils/ResourcesDirectory.cpp \
     scene/Scene.cpp \
     scene/SceneManager.cpp \
     sandbox2d/MainMenuScene.cpp \

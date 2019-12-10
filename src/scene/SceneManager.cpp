@@ -56,4 +56,5 @@ void SceneManagerBase::Add_Scene(Scene *mScene)
 
 void SceneManagerBase::Load_Scene(int mScene)
 {
+    
 }
