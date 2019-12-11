@@ -3,6 +3,7 @@
 
 #include "Component.h"
 #include <iostream>
+#include "Entity.h"
 
 class CharacterController : public Component
 {

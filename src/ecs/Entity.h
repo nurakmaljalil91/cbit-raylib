@@ -89,7 +89,7 @@ public:
     T &Add_Component(TArgs &&... mArgs)
     {
         T *c(new T(std::forward<TArgs>(mArgs)...)); // Create the component
-        //c->entity = this;
+        c->entity = this;
         std::unique_ptr<Component> uPtr{c};
         components.emplace_back(std::move(uPtr));
 

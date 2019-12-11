@@ -55,6 +55,8 @@ void SceneManagerBase::Load_Scene(unsigned int id)
         current_scene = iter->second;
         current_scene->On_Activate(); // FIXME: Maybe Change to On Active
         current_scene->Start();
+    }else{
+        std::cout << "Scene id not found" << std::endl;
     }
 }
 

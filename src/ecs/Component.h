@@ -4,14 +4,13 @@
 #include "raylib.h"
 //#include "Entity.h"
 
-//class Entity;
+class Entity;
 
 class Component
 {
 protected:
 public:
-    //Entity *entity;
-
+    Entity *entity;
     Vector3 position;
     Vector3 rotation;
     Vector3 scale;
