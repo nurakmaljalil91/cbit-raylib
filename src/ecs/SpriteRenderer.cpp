@@ -15,6 +15,21 @@ SpriteRenderer::SpriteRenderer(const char *file_location)
     color = WHITE;
 }
 
+SpriteRenderer::SpriteRenderer(std::string file_location)
+{
+    texture = LoadTexture(file_location.c_str());
+    width = texture.width;
+    height = texture.height;
+
+    source_rect = {0.0f, 0.0f, width, height};
+
+    destination_rect = {position.x, position.y, width , height };
+
+    origin = {width, height};
+    rotation = 0;
+    color = WHITE;
+}
+
 SpriteRenderer::~SpriteRenderer()
 {
 }

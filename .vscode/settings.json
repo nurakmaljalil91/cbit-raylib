@@ -40,6 +40,11 @@
         "bitset": "cpp",
         "iterator": "cpp",
         "string": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "stack": "cpp",
+        "unordered_map": "cpp",
+        "xhash": "cpp"
     }
 }

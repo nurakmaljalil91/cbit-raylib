@@ -1,6 +1,9 @@
 #ifndef SPRITERENDERER_H
 #define SPRITERENDERER_H
+
+#include <string>
 #include "Component.h"
+
 class SpriteRenderer : public Component
 {
 private:
@@ -14,6 +17,7 @@ public:
     Vector2 origin;
     float rotation;
     SpriteRenderer(const char* file_location);
+    SpriteRenderer(std::string file_location);
     ~SpriteRenderer();
 
     void Start() override;

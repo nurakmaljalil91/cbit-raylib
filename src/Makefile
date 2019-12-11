@@ -194,7 +194,7 @@ STD11 = -std=c++11
 #  -std=gnu99           defines C language mode (GNU C from 1999 revision)
 #  -Wno-missing-braces  ignore invalid warning (GCC bug 53119)
 #  -D_DEFAULT_SOURCE    use with -std=c99 on Linux and PLATFORM_WEB, required for timespec
-CFLAGS += -Wall -std=c++11 -D_DEFAULT_SOURCE -Wno-missing-braces
+CFLAGS += -Wall -std=c++14 -D_DEFAULT_SOURCE -Wno-missing-braces
 
 ifeq ($(BUILD_MODE),DEBUG)
     CFLAGS += -g -O0
@@ -361,6 +361,7 @@ PROJECT_SOURCE_FILES ?= \
     utils/ResourcesDirectory.cpp \
     scene/Scene.cpp \
     scene/SceneManager.cpp \
+    scene/SplashScreenScene.cpp \
     sandbox2d/MainMenuScene.cpp \
     sandbox2d/PlayScene.cpp \
     ecs/Entity.cpp \

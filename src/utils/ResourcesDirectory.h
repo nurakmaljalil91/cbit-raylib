@@ -3,18 +3,28 @@
 
 #include <string>
 
-class ResourcesDirectory
+// Class Resources Directory will be singleton
+class ResourcesDirectoryBase
 {
 private:
-   std::string path;
+    static ResourcesDirectoryBase *instance;
+    ResourcesDirectoryBase();
+    std::string path;
 
 public:
-    ResourcesDirectory();
+    virtual ~ResourcesDirectoryBase();
 
-    inline const std::string& Get()
+    static ResourcesDirectoryBase *Get_Instance(){
+        if(!instance){
+            instance = new ResourcesDirectoryBase;
+        }
+        return instance;
+    }
+
+    inline const std::string &Get()
     {
         return path;
     }
-}; // class ResourcesDirectory
+}; // class ResourcesDirectoryBase
 
 #endif // RESOURCESDIRECTORY_H

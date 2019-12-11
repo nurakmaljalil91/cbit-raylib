@@ -8,6 +8,16 @@ MainMenuScene::~MainMenuScene()
 {
 }
 
+void MainMenuScene::On_Create()
+{
+
+    //splash_screen.Add_Component<SpriteRenderer>(Resources_Directory->Get() + "logo.png");
+}
+void MainMenuScene::On_Destroy() {}
+
+void MainMenuScene::On_Activate() {}
+void MainMenuScene::On_Deactivate() {}
+
 void MainMenuScene::Start()
 {
 

@@ -1,5 +1,10 @@
 #include "ResourcesDirectory.h"
 
-ResourcesDirectory::ResourcesDirectory(){
+ResourcesDirectoryBase::ResourcesDirectoryBase()
+{
     path = "../resources/";
+}
+
+ResourcesDirectoryBase::~ResourcesDirectoryBase()
+{
 }
