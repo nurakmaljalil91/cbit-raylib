@@ -1,21 +1,21 @@
 #include "SpriteRenderer.h"
 
-SpriteRenderer::SpriteRenderer(const char *file_location)
+SpriteRenderer::SpriteRenderer(const char *file_location) : show_rect(false)
 {
-    texture = LoadTexture(file_location);
-    width = texture.width;
-    height = texture.height;
+    texture = LoadTexture(file_location); // load the texture
+    width = texture.width;                // the width of the image depend on the image size
+    height = texture.height;              // the height of the sprite is depend of the texture height
 
-    source_rect = {0.0f, 0.0f, width, height};
+    source_rect = {0.0f, 0.0f, width, height}; // original image rect
 
-    destination_rect = {position.x, position.y, width , height };
+    destination_rect = {position.x, position.y, width, height}; // where to draw the texture
 
-    origin = {width, height};
+    anchor = {(width - position.x) / 2, (height - position.y) / 2}; // anchor is the origin of the image // on this case middle of texture
     rotation = 0;
     color = WHITE;
 }
 
-SpriteRenderer::SpriteRenderer(std::string file_location)
+SpriteRenderer::SpriteRenderer(std::string file_location) : show_rect(false)
 {
     texture = LoadTexture(file_location.c_str());
     width = texture.width;
@@ -23,9 +23,24 @@ SpriteRenderer::SpriteRenderer(std::string file_location)
 
     source_rect = {0.0f, 0.0f, width, height};
 
-    destination_rect = {position.x, position.y, width , height };
+    destination_rect = {position.x, position.y, width, height};
 
-    origin = {width, height};
+    anchor = {(width - position.x) / 2, (height - position.y) / 2};
+    rotation = 0;
+    color = WHITE;
+}
+
+SpriteRenderer::SpriteRenderer(std::string file_location, float x, float y, float w, float h) : show_rect(false)
+{
+    texture = LoadTexture(file_location.c_str());
+    width = w;
+    height = h;
+
+    source_rect = {x, y, width, height};
+
+    destination_rect = {position.x, position.y, width, height};
+
+    anchor = {(width - position.x) / 2, (height - position.y) / 2};
     rotation = 0;
     color = WHITE;
 }
@@ -44,9 +59,15 @@ void SpriteRenderer::Update()
 
 void SpriteRenderer::Render()
 {
-    //DrawTexture(texture, position.x, position.y, color);
-    destination_rect = {position.x, position.y, width , height };
-    DrawTexturePro(texture, source_rect, destination_rect, origin, rotation, color);
+    if (show_rect)
+    {
+        DrawLine(destination_rect.x, destination_rect.y, destination_rect.x + 100, destination_rect.y, BLUE);
+        DrawLine(destination_rect.x, destination_rect.y, destination_rect.x, destination_rect.y + 100, GREEN);
+    }
+
+    destination_rect = {position.x, position.y, width, height};
+
+    DrawTexturePro(texture, source_rect, destination_rect, anchor, rotation, color);
 }
 
 void SpriteRenderer::Clear()

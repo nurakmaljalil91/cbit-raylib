@@ -7,8 +7,8 @@
 
 // Initialize pointer to zero so that it can be initialized in first call to getInstance
 // Because main is the first cpp file to compile and read we instantiate SceneManager here
-SceneManagerBase *SceneManagerBase::instance = 0;
-ResourcesDirectoryBase *ResourcesDirectoryBase::instance = 0;
+SceneManagerBase *SceneManagerBase::instance = 0;             // Scene Manager
+ResourcesDirectoryBase *ResourcesDirectoryBase::instance = 0; // Resources Directory
 
 int main(int argc, char const *argv[])
 {

@@ -14,7 +14,6 @@ class Game
 {
 public:
     // Game objects will declare here
-
     SceneManagerBase *SceneManager = SceneManager->Get_Instance(); // Get the SceneManager instance here
 
     Game();          // Game class Constructor

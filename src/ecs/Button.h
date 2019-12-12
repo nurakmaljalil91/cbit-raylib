@@ -15,7 +15,7 @@ public:
     float width;
     float height;
     Rectangle source_rect;
-    Rectangle destination_rect;
+    Rectangle bounds;
     Color color;
     Vector2 origin;
     float rotation;
@@ -24,11 +24,14 @@ public:
     Vector2 mouse_position;
 
     // Button function members
-    int state; // 0 - Normal 1 - Hover 2 - Pressed 
+    int state; // 0 - Normal 1 - Hover 2 - Pressed
     bool action;
-    
+
+    bool show_box;
+
     Button(const char *file_location);
     Button(std::string file_location);
+    Button(std::string file_location, float x, float y, float w, float h);
     virtual ~Button();
 
     void Start() override;

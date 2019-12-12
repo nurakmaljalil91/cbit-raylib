@@ -1,6 +1,6 @@
 #include "Button.h"
 
-Button::Button(const char *file_location) : state(0), action(false)
+Button::Button(const char *file_location) : state(0), action(false), show_box(false)
 {
     texture = LoadTexture(file_location);
     width = texture.width;
@@ -8,7 +8,7 @@ Button::Button(const char *file_location) : state(0), action(false)
 
     source_rect = {0.0f, 0.0f, width, height};
 
-    destination_rect = {position.x - width / 2, position.y - height / 2, width, height};
+    bounds = {position.x - width / 2, position.y - height / 2, width, height};
 
     origin = {width, height};
     center = {(width - position.x) / 2, (height - position.y) / 2};
@@ -16,7 +16,7 @@ Button::Button(const char *file_location) : state(0), action(false)
     color = WHITE;
 }
 
-Button::Button(std::string file_location) : state(0), action(false)
+Button::Button(std::string file_location) : state(0), action(false), show_box(false)
 {
     texture = LoadTexture(file_location.c_str());
     width = texture.width;
@@ -24,7 +24,23 @@ Button::Button(std::string file_location) : state(0), action(false)
 
     source_rect = {0.0f, 0.0f, width, height};
 
-    destination_rect = {position.x - width / 2, position.y - height / 2, width, height};
+    bounds = {position.x - width / 2, position.y - height / 2, width, height};
+
+    origin = {width, height};
+    center = {(width - position.x) / 2, (height - position.y) / 2};
+    rotation = 0;
+    color = WHITE;
+}
+
+Button::Button(std::string file_location, float x, float y,float w, float h) : state(0), action(false), show_box(false)
+{
+    texture = LoadTexture(file_location.c_str());
+    width = w;
+    height = h;
+
+    source_rect = {x, y, width, height};
+
+    bounds = {position.x - width / 2, position.y - height / 2, width, height};
 
     origin = {width, height};
     center = {(width - position.x) / 2, (height - position.y) / 2};
@@ -42,7 +58,7 @@ void Button::Update()
     // std::cout << "x: " << mouse_position.x;
     // std::cout << ",y: " << mouse_position.y << std::endl;
     action = false;
-    if (CheckCollisionPointRec(mouse_position, destination_rect))
+    if (CheckCollisionPointRec(mouse_position, bounds))
     {
         if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
         {
@@ -65,12 +81,19 @@ void Button::Update()
 
 void Button::Render()
 {
-    destination_rect = {position.x - width / 2, position.y - height / 2, width, height};
+
+    bounds = {position.x - width / 2, position.y - height / 2, width, height};
     center = {(width - position.x) / 2, (height - position.y) / 2};
     // std::cout << center.x << "," << center.y << std::endl;
     //DrawTexturePro(texture, source_rect, destination_rect, origin, rotation, color);
-    DrawRectangleLines(destination_rect.x, destination_rect.y, width, height, BLACK);
-    DrawTextureRec(texture, source_rect, Vector2{destination_rect.x, destination_rect.y}, color);
+    if (show_box)
+    {
+        DrawRectangleLines(bounds.x, bounds.y, width, height, BLACK);
+        DrawRectangleLines(position.x, position.y, width, height, RED);
+        DrawRectangleLines(source_rect.x, source_rect.y, source_rect.width, source_rect.height, GREEN);
+    }
+
+    DrawTextureRec(texture, source_rect, Vector2{bounds.x, bounds.y}, color);
 }
 
 void Button::Clear()

@@ -16,9 +16,10 @@ void SplashScreenScene::On_Deactivate() {}
 
 void SplashScreenScene::Start()
 {
-    splash_screen.Add_Component<Button>(Resources_Directory->Get() + "logo.png");
+    splash_screen.Add_Component<SpriteRenderer>(Resources_Directory->Get_Image() + "logo.png");
     splash_screen.transform.position.x = GetScreenWidth() / 2;
     splash_screen.transform.position.y = GetScreenHeight() / 2;
+
     time_to_fade = 200;
 }
 

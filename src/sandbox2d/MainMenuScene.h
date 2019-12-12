@@ -6,10 +6,15 @@
 #include "raylib.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Button.h"
+#include "../scene/SceneManager.h"
+#include "../utils/ResourcesDirectory.h"
 
 class MainMenuScene : public Scene
 {
 public:
+    SceneManagerBase *SceneManager = SceneManager->Get_Instance();
+    ResourcesDirectoryBase *Resources_Directory = Resources_Directory->Get_Instance();
+    
     Entity start_button;
 
     MainMenuScene();
@@ -19,7 +24,7 @@ public:
     void On_Destroy() override; // Called when scene destroyed. Called once per scene.
 
     void On_Activate() override;   // Called whenever a scene is activated.
-    void On_Deactivate() override; // Called whenever a scene is deactivated. 
+    void On_Deactivate() override; // Called whenever a scene is deactivated.
 
     void Start() override;
     void Update() override;
