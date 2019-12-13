@@ -37,8 +37,19 @@ public:
         return image_folder;
     }
 
-    inline const std::string &Get_SpriteSheet(){
+    inline const std::string &Get_SpriteSheet()
+    {
         return sprite_sheets_folder;
+    }
+
+    inline const std::string &Get_Font()
+    {
+        return font_folder;
+    }
+
+    inline const std::string &Get_Audio()
+    {
+        return audio_folder;
     }
 }; // class ResourcesDirectoryBase
 

@@ -6,6 +6,7 @@
 #include "raylib.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Button.h"
+#include "../ecs/Text.h"
 #include "../scene/SceneManager.h"
 #include "../utils/ResourcesDirectory.h"
 
@@ -16,6 +17,7 @@ public:
     ResourcesDirectoryBase *Resources_Directory = Resources_Directory->Get_Instance();
     
     Entity start_button;
+    Entity start_text;
 
     MainMenuScene();
     ~MainMenuScene();

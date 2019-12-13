@@ -20,9 +20,14 @@ void MainMenuScene::On_Deactivate() {}
 
 void MainMenuScene::Start()
 {
+
     start_button.Add_Component<Button>(Resources_Directory->Get_SpriteSheet() + "blueSheet.png", 0, 94, 190, 49);
     start_button.transform.position.x = 640;
-    start_button.transform.position.y = 360;   
+    start_button.transform.position.y = 360;
+    start_text.transform.position.x = 640;
+    start_text.transform.position.y = 360;
+    start_text.Add_Component<Text>(Resources_Directory->Get_Font() + "kenvector_future.ttf");
+    start_text.Get_Component<Text>().text = "START";
 }
 
 void MainMenuScene::Update()
@@ -34,12 +39,15 @@ void MainMenuScene::Update()
         SceneManager->Load_Scene(2);
     }
     start_button.Update();
+    start_text.Update();
 }
 void MainMenuScene::Render()
 {
     start_button.Render();
+    start_text.Render();
 }
 void MainMenuScene::Clear()
 {
     start_button.Clear();
+    start_text.Clear();
 }

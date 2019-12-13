@@ -16,3 +16,7 @@ void Cube::Render()
     DrawCube(position, scale.x, scale.y, scale.z, GRAY);
     DrawCubeWires(position, scale.x, scale.y, scale.z, DARKGRAY);
 }
+
+void Cube::Clear(){
+    
+}

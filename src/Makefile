@@ -369,9 +369,9 @@ PROJECT_SOURCE_FILES ?= \
     ecs/Cube.cpp \
     ecs/SpriteRenderer.cpp \
     ecs/CharacterController.cpp \
-    ecs/Button.cpp
+    ecs/Button.cpp \
+    ecs/Text.cpp
    
-  
 # Define all object files from source files
 SRC = $(call rwildcard, *.c, *.h)
 #OBJS = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

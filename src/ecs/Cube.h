@@ -14,5 +14,6 @@ public:
     void Start() override;
     void Update() override;
     void Render() override;
+    void Clear() override;
 };
 #endif // CUBE_H
