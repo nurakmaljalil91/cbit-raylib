@@ -359,6 +359,7 @@ PROJECT_SOURCE_FILES ?= \
     main.cpp \
     Game.cpp \
     utils/ResourcesDirectory.cpp \
+    utils/ResourcesAllocator.cpp \
     scene/Scene.cpp \
     scene/SceneManager.cpp \
     scene/SplashScreenScene.cpp \
