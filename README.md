@@ -11,6 +11,7 @@
 - [SFML RPG github page](https://github.com/Headturna/SFML_RPG)
 4. That Game Guy
 - [That Game Guy Homepage](http://thatgamesguy.co.uk/game-engine-dev/)
+- [Github page](https://github.com/thatgamesguy/that_game_engine)
 
 ### TODO
 1. Clean code base
