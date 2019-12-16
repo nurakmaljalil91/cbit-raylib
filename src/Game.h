@@ -8,6 +8,7 @@
 #include "scene/SplashScreenScene.h"
 #include "sandbox2d/PlayScene.h"
 #include "sandbox2d/MainMenuScene.h"
+#include "utils/ResourcesAllocator.h"
 
 // Main game class where all the objects will be inside
 class Game

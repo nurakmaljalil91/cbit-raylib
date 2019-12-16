@@ -6,7 +6,7 @@
 #include <string>
 
 template <typename T>
-class ResourcesAllocator
+class ResourcesAllocatorBase
 {
 private:
     int current_id;
