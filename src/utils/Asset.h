@@ -27,10 +27,10 @@ public:
     }
 
     // Texture management
-    void Add_Texture(std::string id, const char *path)
+    void Add_Texture(std::string id, Texture* texture)
     {
 
-        textures.emplace(id, LoadTexture(path));
+        textures.emplace(id, texture);
     }
 
     Texture *Get_Texture(std::string id)
@@ -39,10 +39,10 @@ public:
     }
 
     // Font management
-    void Add_Font(std::string id, std::string path)
+    void Add_Font(std::string id, Font* font)
     {
 
-        fonts.emplace(id, LoadFont(path.c_str()));
+        fonts.emplace(id, font);
     }
 
     Font *Get_Font(std::string id)

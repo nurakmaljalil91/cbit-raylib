@@ -360,6 +360,7 @@ PROJECT_SOURCE_FILES ?= \
     Game.cpp \
     utils/ResourcesDirectory.cpp \
     utils/ResourcesAllocator.cpp \
+    utils/Asset.cpp \
     scene/Scene.cpp \
     scene/SceneManager.cpp \
     scene/SplashScreenScene.cpp \
