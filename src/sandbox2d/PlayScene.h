@@ -2,11 +2,14 @@
 #define PLAYSCENE_H
 
 #include <iostream>
+#include "Raylib.h"
 #include "../scene/Scene.h"
+#include "../utils/Input.h"
 
 class PlayScene : public Scene
 {
 public:
+    InputBase * Input =  Input->Get_Instance();
     PlayScene();
     ~PlayScene();
 

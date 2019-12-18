@@ -1,6 +1,9 @@
 #ifndef INPUT_H
 #define INPUT_H
 
+#include <string>
+#include "raylib.h"
+
 class InputBase
 {
 private:
@@ -18,6 +21,9 @@ public:
         }
         return instance;
     }
+
+    float GetAxis(std::string input_axis);
+
 }; // InputBase class
 
 #endif // INPUT_H

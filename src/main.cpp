@@ -4,11 +4,13 @@
 #include "Game.h"
 #include "scene/SceneManager.h"
 #include "utils/ResourcesDirectory.h"
+#include "utils/Input.h"
 
 // Initialize pointer to zero so that it can be initialized in first call to getInstance
 // Because main is the first cpp file to compile and read we instantiate SceneManager here
 SceneManagerBase *SceneManagerBase::instance = 0;             // Scene Manager
 ResourcesDirectoryBase *ResourcesDirectoryBase::instance = 0; // Resources Directory
+InputBase *InputBase::instance = 0;
 
 int main(int argc, char const *argv[])
 {

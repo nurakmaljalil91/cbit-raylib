@@ -16,9 +16,13 @@ void PlayScene::Start() {}
 
 void PlayScene::Update()
 {
+    std::cout << Input->GetAxis("Horizontal") << std::endl;
     //std::cout << "Play Scene" << std::endl;
 }
 
-void PlayScene::Render() {}
+void PlayScene::Render() {
+    ClearBackground(BLUE);
+
+}
 
 void PlayScene::Clear() {}
