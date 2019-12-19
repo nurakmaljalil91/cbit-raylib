@@ -39,5 +39,6 @@ void Game::Clear()
 
 void Game::Load_Data()
 {
-
+    // Texture2D logo = LoadTexture("../resources/Images/logo.png");
+    // Asset->Add_Texture("logo", logo);
 }
