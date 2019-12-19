@@ -359,6 +359,7 @@ PROJECT_SOURCE_FILES ?= \
     main.cpp \
     Game.cpp \
     utils/ResourcesDirectory.cpp \
+    utils/Cursor.cpp \
     utils/Input.cpp \
     utils/ResourcesAllocator.cpp \
     utils/Asset.cpp \

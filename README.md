@@ -15,7 +15,19 @@
 
 ### TODO
 1. Clean code base
+19/12/2019
+- Cursor class : Use to customize cursor
+- Tile Map class : To show tile map
+- Collison detection mechanic (collider2d / collision2d) 
+- Destroy mechanic
+- Entity Manager : Manage all entities in the scene
+- Camera (2d & 3d) 
 
 ### Done
 11/12/2019 - Add Button Component, 
 
+### Unsolved implementation
+18/12/2019 
+- Still cannot implement resources allocator or asset manager
+- Need to understand about pointer
+- Change cursor image

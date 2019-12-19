@@ -36,3 +36,8 @@ void Game::Clear()
 {
     SceneManager->Clear(); // Clear all the scenes in scene manager
 }
+
+void Game::Load_Data()
+{
+
+}

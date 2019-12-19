@@ -9,7 +9,7 @@
 class AssetBase
 {
 private:
-    std::map<std::string, Texture *> textures;
+    std::map<std::string, Texture2D *> textures;
     std::map<std::string, Font *> fonts;
     static AssetBase *instance;
     AssetBase();
@@ -27,7 +27,7 @@ public:
     }
 
     // Texture management
-    void Add_Texture(std::string id, Texture* texture)
+    void Add_Texture(std::string id, Texture2D* texture)
     {
 
         textures.emplace(id, texture);

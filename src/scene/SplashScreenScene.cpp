@@ -33,7 +33,7 @@ void SplashScreenScene::Update()
     time_to_fade -= GetTime();
     if (time_to_fade <= 0)
     {
-        SceneManager->Load_Scene(2);
+        SceneManager->Load_Scene(1); // Change the scene to the first scene 
     }
 }
 

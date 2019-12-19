@@ -9,13 +9,18 @@
 #include "sandbox2d/PlayScene.h"
 #include "sandbox2d/MainMenuScene.h"
 #include "utils/ResourcesAllocator.h"
+#include "utils/ResourcesDirectory.h"
+#include "utils/Asset.h"
 
 // Main game class where all the objects will be inside
 class Game
 {
+
 public:
     // Game objects will declare here
-    SceneManagerBase *SceneManager = SceneManager->Get_Instance(); // Get the SceneManager instance here
+    SceneManagerBase *SceneManager = SceneManager->Get_Instance();                     // Get the SceneManager instance here
+    ResourcesDirectoryBase *Resources_Directory = Resources_Directory->Get_Instance(); // Get Resource Directory instance here
+    AssetBase *Asset = Asset->Get_Instance();                                          // Get the Asset instance here
 
     Game();          // Game class Constructor
     virtual ~Game(); // Game class deconstructor
@@ -23,6 +28,8 @@ public:
     void Update();   // Game class update function
     void Render();   // Game class draw function
     void Clear();    // Game class clean function
-};                   // class Game
+
+    void Load_Data(); // load the data of the game one time
+};                    // class Game
 
 #endif // GAME_H
