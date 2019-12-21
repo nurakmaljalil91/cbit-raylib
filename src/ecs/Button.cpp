@@ -2,53 +2,87 @@
 
 Button::Button(const char *file_location) : state(0), action(false), show_box(false)
 {
-    can_hover = false;
-    texture = LoadTexture(file_location);
-    width = texture.width;
-    height = texture.height;
+    can_hover = false;                    // mean that hover texture is set
+    texture = LoadTexture(file_location); // load the texture
+    width = texture.width;                // texture width follow original width
+    height = texture.height;              // component height follow texture height
 
-    normal_source_rect = {0.0f, 0.0f, width, height};
+    normal_source_rect = {0.0f, 0.0f, width, height}; // set the normal source rect
 
-    bounds = {position.x - width / 2, position.y - height / 2, width, height};
+    bounds = {position.x - width / 2, position.y - height / 2, width, height}; // bounds of the button
 
     origin = {width, height};
-    center = {(width - position.x) / 2, (height - position.y) / 2};
+    center = {(width - position.x) / 2, (height - position.y) / 2}; // center or anchor of the texture
     rotation = 0;
-    color = WHITE;
+    color = WHITE; // set color as white
 }
 
 Button::Button(std::string file_location) : state(0), action(false), show_box(false)
 {
-    can_hover = false;
-    texture = LoadTexture(file_location.c_str());
-    width = texture.width;
-    height = texture.height;
+    can_hover = false;                            // mean that hover texture is set
+    texture = LoadTexture(file_location.c_str()); // load the texture
+    width = texture.width;                        // texture width follow original width
+    height = texture.height;                      // component height follow texture height
 
-    normal_source_rect = {0.0f, 0.0f, width, height};
+    normal_source_rect = {0.0f, 0.0f, width, height}; // set the normal source rect
 
-    bounds = {position.x - width / 2, position.y - height / 2, width, height};
+    bounds = {position.x - width / 2, position.y - height / 2, width, height}; // bounds of the button
 
     origin = {width, height};
-    center = {(width - position.x) / 2, (height - position.y) / 2};
+    center = {(width - position.x) / 2, (height - position.y) / 2}; // center or anchor of the texture
     rotation = 0;
-    color = WHITE;
+    color = WHITE; // set color as white
+}
+
+Button::Button(Texture2D _texture) : state(0), action(false), show_box(false)
+{
+    can_hover = false;       // mean that hover texture is set
+    texture = _texture;      // set texture
+    width = texture.width;   // texture width follow original width
+    height = texture.height; // component height follow texture height
+
+    normal_source_rect = {0.0f, 0.0f, width, height}; // set the normal source rect
+
+    bounds = {position.x - width / 2, position.y - height / 2, width, height}; // bounds of the button
+
+    origin = {width, height};
+    center = {(width - position.x) / 2, (height - position.y) / 2}; // center or anchor of the texture
+    rotation = 0;
+    color = WHITE; // set color as white
 }
 
 Button::Button(std::string file_location, float x, float y, float w, float h) : state(0), action(false), show_box(false)
 {
-    can_hover = false;
-    texture = LoadTexture(file_location.c_str());
-    width = w;
-    height = h;
+    can_hover = false;                            // mean that hover texture is set
+    texture = LoadTexture(file_location.c_str()); // load the texture
+    width = w;                                    // texture width follow set width
+    height = h;                                   // component height follow texture height
 
-    normal_source_rect = {x, y, width, height};
+    normal_source_rect = {x, y, width, height}; // set the normal source rect
 
-    bounds = {position.x - width / 2, position.y - height / 2, width, height};
+    bounds = {position.x - width / 2, position.y - height / 2, width, height}; // bounds of the button
 
     origin = {width, height};
-    center = {(width - position.x) / 2, (height - position.y) / 2};
+    center = {(width - position.x) / 2, (height - position.y) / 2}; // center or anchor of the texture
     rotation = 0;
-    color = WHITE;
+    color = WHITE; // set color as white
+}
+
+Button::Button(Texture2D _texture, float x, float y, float w, float h) : state(0), action(false), show_box(false)
+{
+    can_hover = false;  // mean that hover texture is set
+    texture = _texture; // set texture
+    width = w;          // texture width follow set width
+    height = h;         // component height follow texture height
+
+    normal_source_rect = {x, y, width, height}; // set the normal source rect
+
+    bounds = {position.x - width / 2, position.y - height / 2, width, height}; // bounds of the button
+
+    origin = {width, height};
+    center = {(width - position.x) / 2, (height - position.y) / 2}; // center or anchor of the texture
+    rotation = 0;
+    color = WHITE; // set color as white
 }
 
 Button::~Button() {}
@@ -58,8 +92,6 @@ void Button::Start() {}
 void Button::Update()
 {
     mouse_position = GetMousePosition(); // mouse position using raylib mouse position
-    // std::cout << "x: " << mouse_position.x;
-    // std::cout << ",y: " << mouse_position.y << std::endl;
     action = false;
     if (CheckCollisionPointRec(mouse_position, bounds))
     {
@@ -89,11 +121,10 @@ void Button::Update()
 void Button::Render()
 {
 
-    bounds = {position.x - width / 2, position.y - height / 2, width, height};
-    center = {(width - position.x) / 2, (height - position.y) / 2};
-    // std::cout << center.x << "," << center.y << std::endl;
-    //DrawTexturePro(texture, source_rect, destination_rect, origin, rotation, color);
-    if (show_box)
+    bounds = {position.x - width / 2, position.y - height / 2, width, height}; // always update bounds of button
+    center = {(width - position.x) / 2, (height - position.y) / 2};            // always update center or anchor of the texture
+
+    if (show_box) // show the rectangle
     {
         DrawRectangleLines(bounds.x, bounds.y, width, height, BLACK);
         DrawRectangleLines(position.x, position.y, width, height, RED);
@@ -102,11 +133,11 @@ void Button::Render()
 
     if (can_hover && state == 1) // hover state
     {
-        DrawTextureRec(texture, hover_source_rect, Vector2{bounds.x, bounds.y}, color);
+        DrawTextureRec(texture, hover_source_rect, Vector2{bounds.x, bounds.y}, color); // draw the hover texture
     }
     else // normal state
     {
-        DrawTextureRec(texture, normal_source_rect, Vector2{bounds.x, bounds.y}, color);
+        DrawTextureRec(texture, normal_source_rect, Vector2{bounds.x, bounds.y}, color); // draw normal texture
     }
 }
 
@@ -164,7 +195,10 @@ bool Button::State_Click()
     }
 }
 
-void Button::Set_Normal_Image(std::string file_location, float x, float y, float w, float h) {}
+void Button::Set_Normal_Image(std::string file_location, float x, float y, float w, float h)
+{
+    normal_source_rect = {x, y, w, h};
+}
 
 void Button::Set_Hover_Image(std::string file_location, float x, float y, float w, float h)
 {
@@ -172,4 +206,7 @@ void Button::Set_Hover_Image(std::string file_location, float x, float y, float 
     can_hover = true;
 }
 
-void Button::Set_Click_Image(std::string file_location, float x, float y, float w, float h) {}
+void Button::Set_Click_Image(std::string file_location, float x, float y, float w, float h)
+{
+    click_source_rect = {x, y, w, h};
+}

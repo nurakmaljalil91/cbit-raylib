@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Entity.h"
+// class Entity;
 
 class EntitiesManager
 {
@@ -13,8 +14,6 @@ private:
     std::vector<std::shared_ptr<Entity>> new_entities;
 
 public:
-    EntitiesManager();          // Constructor
-    virtual ~EntitiesManager(); // Deconstructor
 
     void Add(std::shared_ptr<Entity> entity); // Add the entity to entities
 
@@ -24,6 +23,7 @@ public:
     void Clear();  // Clear all teh entities clear
 
     void Init_New_Entities(); // Process new entities
+    void Queue_For_Removal(); // Process to remove entities
 };                            // class EntitiesManager
 
 #endif // ENTITIESMANAGER_H

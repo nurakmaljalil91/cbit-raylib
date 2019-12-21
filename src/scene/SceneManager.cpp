@@ -2,15 +2,11 @@
 
 SceneManagerBase::SceneManagerBase() : scenes(0),
                                        current_scene(0),
-                                       scene_id(0)
-{
-}
+                                       scene_id(0) {}
 
 SceneManagerBase::~SceneManagerBase() {}
 
-void SceneManagerBase::Start()
-{
-}
+void SceneManagerBase::Start() {}
 
 void SceneManagerBase::Update()
 {
@@ -54,8 +50,10 @@ void SceneManagerBase::Load_Scene(unsigned int id)
         }
         current_scene = iter->second;
         current_scene->On_Activate(); // FIXME: Maybe Change to On Active
-        current_scene->Start();
-    }else{
+        current_scene->Start(); 
+    }
+    else
+    {
         std::cout << "Scene id not found" << std::endl;
     }
 }

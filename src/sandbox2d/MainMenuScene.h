@@ -2,8 +2,10 @@
 #define MAINMENUSCENE_H
 
 #include <iostream>
+#include <memory>
 #include "../scene/Scene.h"
 #include "raylib.h"
+//#include "../ecs/EntitiesManager.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Button.h"
 #include "../ecs/Text.h"
@@ -12,12 +14,15 @@
 
 class MainMenuScene : public Scene
 {
+private:
+    // std::shared_ptr<Entity> start_button;              // button start
+    Entity start_button;
+    Entity start_text;                // text in front of button
+    //EntitiesManager entities_manager; // the entities manager
+
 public:
     SceneManagerBase *SceneManager = SceneManager->Get_Instance();
     ResourcesDirectoryBase *Resources_Directory = Resources_Directory->Get_Instance();
-    
-    Entity start_button;
-    Entity start_text;
 
     MainMenuScene();
     ~MainMenuScene();
@@ -32,6 +37,6 @@ public:
     void Update() override;
     void Render() override;
     void Clear() override;
-};
+}; // class MainMenuScene
 
 #endif // MAINMENUSCENE_H

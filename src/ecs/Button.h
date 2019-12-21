@@ -36,7 +36,9 @@ public:
 
     Button(const char *file_location);                                     // Constructor if the image is single image using const* char
     Button(std::string file_location);                                     // Constructor if the image is single image using string
+    Button(Texture2D _texture);                                            // Constructor if the image is single image using texture
     Button(std::string file_location, float x, float y, float w, float h); // Constructor if using strings
+    Button(Texture2D _texture, float x, float y, float w, float h);        // Constructor if using texture
     virtual ~Button();                                                     // Deconstructor
 
     void Start() override;  // Start or initialization of the button

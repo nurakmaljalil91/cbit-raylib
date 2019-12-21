@@ -9,7 +9,6 @@
 #include <array>
 #include "raylib.h"
 #include "Component.h"
-//#include "CharacterController.h"
 
 using ComponentID = std::size_t;
 using Group = std::size_t;
@@ -43,7 +42,7 @@ struct GameObject
     const char *tag;       // tag for gameObject to be found
     int layer = 0;         // check where the layer of the entity
     bool is_active = true; // only update and render when the entity is active
-};
+};                         // struct GameObject
 
 // Transform act physical attributes saver
 struct ETransform
@@ -51,11 +50,14 @@ struct ETransform
     Vector3 position = {0.0, 0.0, 0.0}; // position of the entity
     Vector3 rotation = {0.0, 0.0, 0.0}; // rotation of the entity
     Vector3 scale = {1.0, 1.0, 1.0};    // scale for the entity
-};
+};                                      // struct Transform
 
-// Class of entity
 class Entity
 {
+private:
+    bool ready_to_remove;                               // check if entity is ready to remove
+    std::vector<std::unique_ptr<Component>> components; // all components attach to the entity
+
 public:
     ComponentArray component_array;
     ComponentBitSet component_bitset;
@@ -64,55 +66,56 @@ public:
     GameObject gameObject; // GameObject of the entity
     ETransform transform;  // Transform of the entity
 
-    std::vector<std::unique_ptr<Component>> components; // all components attach to the entity
-
     Entity();          // Entity constructor
     virtual ~Entity(); // Entity deconstructor
 
-    bool Has_Group(Group mGroup)
+    bool Has_Group(Group mGroup) // FIXME: Not implement
     {
         return group_bitset[mGroup];
     }
-    void Add_Group(Group mGroup);
-    void Delete_Group(Group mGroup)
+
+    void Add_Group(Group mGroup); // FIXME: Not implement
+
+    void Delete_Group(Group mGroup) // FIXME: Not implement
     {
         group_bitset[mGroup] = false;
     }
 
     template <typename T>
-    bool Has_Component() const
+    bool Has_Component() const // Check if entity has component
     {
         return component_bitset[Get_Component_Type_ID<T>()];
     }
 
-    template <typename T, typename... TArgs>
+    template <typename T, typename... TArgs> // Add component to the entity
     T &Add_Component(TArgs &&... mArgs)
     {
         T *c(new T(std::forward<TArgs>(mArgs)...)); // Create the component
-        c->entity = this;
-        std::unique_ptr<Component> uPtr{c};
-        components.emplace_back(std::move(uPtr));
+        c->entity = this;                           // initialize the component with the entity
+        std::unique_ptr<Component> uPtr{c};         // NOTE:?
+        components.emplace_back(std::move(uPtr));   // add the component to the list of components
 
         component_array[Get_Component_Type_ID<T>()] = c;
         component_bitset[Get_Component_Type_ID<T>()] = true;
-        c->Start();
+        c->Start(); // Start or initialize the component
         return *c;
     }
 
     template <typename T>
-    T &Get_Component() const
+    T &Get_Component() const // Get the component
     {
         auto ptr(component_array[Get_Component_Type_ID<T>()]);
         return *static_cast<T *>(ptr);
     }
 
-    void Update_Entity_Transform(Vector3 mPosition, Vector3 mRotation, Vector3 mScale)
+    void Update_Entity_Transform(Vector3 mPosition, Vector3 mRotation, Vector3 mScale) // FIXME : Not implement
     {
         transform.position = mPosition;
         transform.rotation = mRotation;
         transform.scale = mScale;
     }
-    void Update()
+
+    void Update() // update all the component in the components
     {
         if (gameObject.is_active)
         {
@@ -120,17 +123,13 @@ public:
             {
                 // update the transform for the component
                 c->Update_Transform(transform.position, transform.rotation, transform.scale);
-                // if (this->Has_Component<CharacterController>())
-                // {
-                //     Update_Entity_Transform(this->Get_Component<CharacterController>()->position, this->Get_Component<CharacterController>()->rotation, this->Get_Component<CharacterController>()->scale);
-                // }
-                
+
                 c->Update();
             }
         }
     }
 
-    void Render()
+    void Render() // Render all the component in the components
     {
         if (gameObject.is_active)
         {
@@ -141,12 +140,22 @@ public:
         }
     }
 
-    void Clear()
+    void Clear() // Render all the component in the components
     {
         for (auto &c : components)
         {
             c->Clear();
         }
     }
-};
+
+    void Ready_To_Remove() // set the entity ready to be remove from entities manager
+    {
+        ready_to_remove = true;
+    }
+
+    bool Is_Ready_To_Remove() // Return the ready to move boolean for the entities manager
+    {
+        return ready_to_remove;
+    }
+};     // Class Entity
 #endif // ENTITY_H
