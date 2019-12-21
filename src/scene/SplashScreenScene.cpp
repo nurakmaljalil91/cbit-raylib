@@ -4,9 +4,7 @@ SplashScreenScene::SplashScreenScene() : time_to_fade(200) {}
 
 SplashScreenScene::~SplashScreenScene() {}
 
-void SplashScreenScene::On_Create()
-{
-}
+void SplashScreenScene::On_Create() {}
 
 void SplashScreenScene::On_Destroy() {}
 
@@ -16,30 +14,26 @@ void SplashScreenScene::On_Deactivate() {}
 
 void SplashScreenScene::Start()
 {
-    splash_screen.Add_Component<SpriteRenderer>(Resources_Directory->Get_Image() + "logo.png");
-    splash_screen.transform.position.x = GetScreenWidth() / 2;
-    splash_screen.transform.position.y = GetScreenHeight() / 2;
+    splash_screen.Add_Component<SpriteRenderer>(Asset->Get_Texture("logo"));
+    splash_screen.transform.position.x = GetScreenWidth() / 2;  // make logo in the middle of the screen
+    splash_screen.transform.position.y = GetScreenHeight() / 2; // make logo in the middle of the screen
 
-    time_to_fade = 200;
+    time_to_fade = 200; // start the timers
 }
 
 void SplashScreenScene::Update()
 {
     splash_screen.Update();
-    // if (splash_screen.Get_Component<Button>().action && splash_screen.Get_Component<Button>().state == 1)
-    // {
-    //     SceneManager->Load_Scene(1);
-    // }
-    time_to_fade -= GetTime();
-    if (time_to_fade <= 0)
+    time_to_fade -= GetTime(); // reduce the timer
+    if (time_to_fade <= 0)     // when timer reach zero
     {
-        SceneManager->Load_Scene(1); // Change the scene to the first scene 
+        SceneManager->Load_Scene(1); // Change the scene to the first scene
     }
 }
 
 void SplashScreenScene::Render()
 {
-    ClearBackground(WHITE);
+    ClearBackground(WHITE); // Background color
     splash_screen.Render();
 }
 

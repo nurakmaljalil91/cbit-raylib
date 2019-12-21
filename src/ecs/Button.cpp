@@ -200,6 +200,12 @@ void Button::Set_Normal_Image(std::string file_location, float x, float y, float
     normal_source_rect = {x, y, w, h};
 }
 
+void Button::Set_Hover_Image(float x, float y, float w, float h)
+{
+    hover_source_rect = {x, y, w, h};
+    can_hover = true;
+}
+
 void Button::Set_Hover_Image(std::string file_location, float x, float y, float w, float h)
 {
     hover_source_rect = {x, y, w, h};

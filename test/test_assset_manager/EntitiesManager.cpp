@@ -33,8 +33,8 @@ void EntitiesManager::Clear()
 
 void EntitiesManager::Init_New_Entities()
 {
-    entities.insert(entities.end(), new_entities.begin(), new_entities.end()); // combine the new entities with the original entities
-
+    //entities.assign(new_entities.begin(), new_entities.end()); // combine the new entities with the original entities
+    entities.insert(entities.end(), new_entities.begin(), new_entities.end());
     new_entities.clear(); // clear the oject inside the new entities
 }
 

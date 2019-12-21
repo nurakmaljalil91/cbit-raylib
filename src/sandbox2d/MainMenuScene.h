@@ -5,27 +5,28 @@
 #include <memory>
 #include "../scene/Scene.h"
 #include "raylib.h"
-//#include "../ecs/EntitiesManager.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Button.h"
 #include "../ecs/Text.h"
 #include "../scene/SceneManager.h"
 #include "../utils/ResourcesDirectory.h"
+#include "../ecs/EntitiesManager.h"
+#include "../utils/Asset.h"
 
 class MainMenuScene : public Scene
 {
 private:
-    // std::shared_ptr<Entity> start_button;              // button start
-    Entity start_button;
-    Entity start_text;                // text in front of button
-    //EntitiesManager entities_manager; // the entities manager
+    std::shared_ptr<Entity> start_button; // button start
+    std::shared_ptr<Entity> start_text;   // text in front of button
+    EntitiesManager entities_manager;     // the entities manager
 
 public:
-    SceneManagerBase *SceneManager = SceneManager->Get_Instance();
-    ResourcesDirectoryBase *Resources_Directory = Resources_Directory->Get_Instance();
+    SceneManagerBase *SceneManager = SceneManager->Get_Instance();                     // Get Scene Manager
+    ResourcesDirectoryBase *Resources_Directory = Resources_Directory->Get_Instance(); // Get Resources Directory
+    AssetBase *Asset = Asset->Get_Instance();                                          // Get Asset
 
-    MainMenuScene();
-    ~MainMenuScene();
+    MainMenuScene();  // Constructor
+    ~MainMenuScene(); // Deconstructor
 
     void On_Create() override;  // Called when scene initially created. Called once per scene.
     void On_Destroy() override; // Called when scene destroyed. Called once per scene.

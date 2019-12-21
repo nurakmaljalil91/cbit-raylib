@@ -54,6 +54,7 @@ public:
     bool State_Click();
 
     void Set_Normal_Image(std::string file_location, float x, float y, float w, float h);
+    void Set_Hover_Image(float x, float y, float w, float h);
     void Set_Hover_Image(std::string file_location, float x, float y, float w, float h);
     void Set_Click_Image(std::string file_location, float x, float y, float w, float h);
 

@@ -30,9 +30,39 @@ SpriteRenderer::SpriteRenderer(std::string file_location) : show_rect(false)
     color = WHITE;
 }
 
+SpriteRenderer::SpriteRenderer(Texture2D _texture) : show_rect(false)
+{
+    texture = _texture;
+    width = texture.width;
+    height = texture.height;
+
+    source_rect = {0.0f, 0.0f, width, height};
+
+    destination_rect = {position.x, position.y, width, height};
+
+    anchor = {(width - position.x) / 2, (height - position.y) / 2};
+    rotation = 0;
+    color = WHITE;
+}
+
 SpriteRenderer::SpriteRenderer(std::string file_location, float x, float y, float w, float h) : show_rect(false)
 {
     texture = LoadTexture(file_location.c_str());
+    width = w;
+    height = h;
+
+    source_rect = {x, y, width, height};
+
+    destination_rect = {position.x, position.y, width, height};
+
+    anchor = {(width - position.x) / 2, (height - position.y) / 2};
+    rotation = 0;
+    color = WHITE;
+}
+
+SpriteRenderer::SpriteRenderer(Texture2D _texture, float x, float y, float w, float h) : show_rect(false)
+{
+    texture = _texture;
     width = w;
     height = h;
 

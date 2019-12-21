@@ -9,6 +9,7 @@ class SpriteRenderer : public Component
 {
 private:
     Texture2D texture;
+
 public:
     float width;
     float height;
@@ -20,10 +21,12 @@ public:
 
     bool show_rect;
 
-    SpriteRenderer(const char* file_location);
+    SpriteRenderer(const char *file_location);
     SpriteRenderer(std::string file_location);
+    SpriteRenderer(Texture2D _texture);
     SpriteRenderer(std::string file_location, float x, float y, float w, float h);
-    
+    SpriteRenderer(Texture2D _texture, float x, float y, float w, float h);
+
     ~SpriteRenderer();
 
     void Start() override;

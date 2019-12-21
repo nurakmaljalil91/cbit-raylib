@@ -15,6 +15,10 @@
 // Main game class where all the objects will be inside
 class Game
 {
+private:
+    Texture2D logo;
+    Texture2D blue_sheets;
+    Sound click_1;
 
 public:
     // Game objects will declare here
@@ -29,7 +33,8 @@ public:
     void Render();   // Game class draw function
     void Clear();    // Game class clean function
 
-    void Load_Data(); // load the data of the game one time
-};                    // class Game
+    void Load_Data();   // load the data of the game one time
+    void Unload_Data(); // unload the data of the game one time
+};                      // class Game
 
 #endif // GAME_H

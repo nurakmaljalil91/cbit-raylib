@@ -39,6 +39,18 @@ void Game::Clear()
 
 void Game::Load_Data()
 {
-    // Texture2D logo = LoadTexture("../resources/Images/logo.png");
-    // Asset->Add_Texture("logo", logo);
+    logo = LoadTexture("../resources/Images/logo.png");
+    blue_sheets = LoadTexture("../resources/SpriteSheets/blueSheet.png");
+    click_1 = LoadSound("../resources/Audio/click1.ogg");
+
+    Asset->Add_Texture("logo", logo);
+    Asset->Add_Texture("blue_sheet", blue_sheets);
+    Asset->Add_Audio("click_1", click_1);
+}
+
+void Game::Unload_Data()
+{
+    UnloadTexture(logo);
+    UnloadTexture(blue_sheets);
+    UnloadSound(click_1);
 }

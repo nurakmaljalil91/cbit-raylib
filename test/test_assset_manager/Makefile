@@ -357,26 +357,10 @@ OBJ_DIR = obj
 # Define all source files required
 PROJECT_SOURCE_FILES ?= \
     main.cpp \
-    Game.cpp \
-    utils/ResourcesDirectory.cpp \
-    utils/Cursor.cpp \
-    utils/Input.cpp \
-    utils/ResourcesAllocator.cpp \
-    utils/Asset.cpp \
-    scene/Scene.cpp \
-    scene/SceneManager.cpp \
-    scene/SplashScreenScene.cpp \
-    sandbox2d/MainMenuScene.cpp \
-    sandbox2d/PlayScene.cpp \
-    ecs/Entity.cpp \
-    ecs/Component.cpp \
-    ecs/EntitiesManager.cpp \
-    ecs/Cube.cpp \
-    ecs/SpriteRenderer.cpp \
-    ecs/CharacterController.cpp \
-    ecs/Button.cpp \
-    ecs/Text.cpp
-   
+    Entity.cpp \
+    Component.cpp \
+    EntitiesManager.cpp \
+  
 # Define all object files from source files
 SRC = $(call rwildcard, *.c, *.h)
 #OBJS = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -402,7 +386,7 @@ all:
 
 # Project target defined by PROJECT_NAME
 $(PROJECT_NAME): $(OBJS)
-	$(CC) -o ../bin/$(PROJECT_NAME)$(EXT) $(OBJS) $(CFLAGS) $(INCLUDE_PATHS) $(LDFLAGS) $(LDLIBS) -D$(PLATFORM)
+	$(CC) -o $(PROJECT_NAME)$(EXT) $(OBJS) $(CFLAGS) $(INCLUDE_PATHS) $(LDFLAGS) $(LDLIBS) -D$(PLATFORM)
 
 # Compile source files
 # NOTE: This pattern will compile every module defined on $(OBJS)

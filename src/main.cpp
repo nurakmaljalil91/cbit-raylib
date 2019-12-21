@@ -19,10 +19,13 @@ int main(int argc, char const *argv[])
 {
 
     InitWindow(1280, 720, "Game"); // Initialize the window
+    InitAudioDevice();             // Initialize the audio device
     SetTargetFPS(60);              // Set the frame for 60 frame per seconds
 
-    Game game;                                                                      // Game initialize
-    game.Start();                                                                   // Start will initialize all the game process
+    Game game;        // Game initialize
+    game.Load_Data(); // Load the game data here
+    game.Start();     // Start will initialize all the game process
+
     HideCursor();                                                                   // Hide the cursor
     Cursor cursor("../resources/SpriteSheets/sheet_white1x.png", 350, 450, 50, 50); // create cursor
     while (!WindowShouldClose())                                                    // Detect window close button or ESC key
@@ -38,8 +41,10 @@ int main(int argc, char const *argv[])
         EndDrawing();              // End render here
     }
 
-    game.Clear();   // Clear all the objects load in the game
-    cursor.Clear(); // Clear the cursor texture
-    CloseWindow();  // Close window and OpenGL context
+    game.Clear();       // Clear all the objects load in the game
+    game.Unload_Data(); // Unload all the data in the game
+    cursor.Clear();     // Clear the cursor texture
+    CloseAudioDevice(); // Close audio device
+    CloseWindow();      // Close window and OpenGL context
     return 0;
 }
