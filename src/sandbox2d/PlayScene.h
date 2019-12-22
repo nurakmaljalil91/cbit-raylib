@@ -2,14 +2,22 @@
 #define PLAYSCENE_H
 
 #include <iostream>
+#include <memory>
 #include "Raylib.h"
 #include "../scene/Scene.h"
 #include "../utils/Input.h"
+#include "../ecs/EntitiesManager.h"
+
+#include "Player.h"
 
 class PlayScene : public Scene
 {
+private:
+    std::shared_ptr<Player> player;
+    EntitiesManager entities_manager;
+
 public:
-    InputBase * Input =  Input->Get_Instance();
+    InputBase *Input = Input->Get_Instance();
     PlayScene();
     ~PlayScene();
 

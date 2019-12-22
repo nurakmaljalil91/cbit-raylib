@@ -8,21 +8,36 @@ void PlayScene::On_Create() {}
 
 void PlayScene::On_Destroy() {}
 
-void PlayScene::On_Activate() {}
+void PlayScene::On_Activate()
+{
+    player = std::make_shared<Player>();
+}
 
 void PlayScene::On_Deactivate() {}
 
-void PlayScene::Start() {}
+void PlayScene::Start()
+{
+    player->Start();
+    entities_manager.Add(player);
+}
 
 void PlayScene::Update()
 {
-    // std::cout << Input->GetAxis("Horizontal") << std::endl;
-    // std::cout << "Play Scene" << std::endl;
+    player->Update();
+    entities_manager.Init_New_Entities();
+    entities_manager.Queue_For_Removal();
+    entities_manager.Update();
 }
 
-void PlayScene::Render() {
+void PlayScene::Render()
+{
     ClearBackground(BLUE);
-
+    player->Render();
+    entities_manager.Render();
 }
 
-void PlayScene::Clear() {}
+void PlayScene::Clear()
+{
+    player->Clear();
+    entities_manager.Clear();
+}

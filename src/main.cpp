@@ -23,7 +23,7 @@ int main(int argc, char const *argv[])
     SetTargetFPS(60);              // Set the frame for 60 frame per seconds
 
     Game game;        // Game initialize
-    game.Load_Data(); // Load the game data here
+    game.Load_Data(); // Load the game data here & put inside Asset
     game.Start();     // Start will initialize all the game process
 
     HideCursor();                                                                   // Hide the cursor
@@ -42,7 +42,7 @@ int main(int argc, char const *argv[])
     }
 
     game.Clear();       // Clear all the objects load in the game
-    game.Unload_Data(); // Unload all the data in the game
+    game.Unload_Data(); // Unload all the data in the game Asset
     cursor.Clear();     // Clear the cursor texture
     CloseAudioDevice(); // Close audio device
     CloseWindow();      // Close window and OpenGL context

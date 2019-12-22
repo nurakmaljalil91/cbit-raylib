@@ -13,8 +13,9 @@ public:
     int size;
     int spacing;
     Color color;
-    
+
     Text(std::string font_location);
+    Text(Font _font);
     ~Text();
 
     void Start() override;

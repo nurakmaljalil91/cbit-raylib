@@ -16,9 +16,11 @@
 class Game
 {
 private:
-    Texture2D logo;
-    Texture2D blue_sheets;
-    Sound click_1;
+    Texture2D logo;                 // logo image
+    Texture2D blue_sheets;          // blue ui sprite sheet
+    Texture2D sokoban_sprite_sheet; // sokoban sprite sheet
+    Font kenvector;                 // kenvector font
+    Sound click_1;                  // click sound ogg
 
 public:
     // Game objects will declare here

@@ -366,6 +366,7 @@ PROJECT_SOURCE_FILES ?= \
     scene/Scene.cpp \
     scene/SceneManager.cpp \
     scene/SplashScreenScene.cpp \
+    sandbox2d/Player.cpp \
     sandbox2d/MainMenuScene.cpp \
     sandbox2d/PlayScene.cpp \
     ecs/Entity.cpp \
