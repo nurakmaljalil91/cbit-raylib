@@ -12,7 +12,7 @@ class Player : public Entity
 {
 private:
 public:
-    AssetBase *Asset = Asset->Get_Instance();
+    AssetBase *Asset = Asset->Get_Instance(); // Get Asset instance
 
     Player();          // Constructor
     virtual ~Player(); // Deconstructor

@@ -6,17 +6,24 @@
 #include "Raylib.h"
 #include "../scene/Scene.h"
 #include "../utils/Input.h"
+#include "../utils/Asset.h"
+#include "../utils/ResourcesDirectory.h"
+#include "../scene/SceneManager.h"
 #include "../ecs/EntitiesManager.h"
-
+#include "../ecs/Entity.h"
 #include "Player.h"
 
 class PlayScene : public Scene
 {
 private:
-    std::shared_ptr<Player> player;
+    // std::shared_ptr<Player> player;
+    std::shared_ptr<Entity> player;
     EntitiesManager entities_manager;
 
 public:
+    SceneManagerBase *SceneManager = SceneManager->Get_Instance();                     // Get Scene Manager
+    ResourcesDirectoryBase *Resources_Directory = Resources_Directory->Get_Instance(); // Get Resources Directory
+    AssetBase *Asset = Asset->Get_Instance();                                          // Get Asset instance
     InputBase *Input = Input->Get_Instance();
     PlayScene();
     ~PlayScene();

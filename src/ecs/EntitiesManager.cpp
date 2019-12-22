@@ -31,6 +31,18 @@ void EntitiesManager::Clear()
     }
 }
 
+bool EntitiesManager::Inside(std::shared_ptr<Entity> entity)
+{
+    if (std::find(entities.begin(), entities.end(), entity) != entities.end())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 void EntitiesManager::Init_New_Entities()
 {
     entities.insert(entities.end(), new_entities.begin(), new_entities.end()); // combine the new entities with the original entities

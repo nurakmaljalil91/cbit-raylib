@@ -83,6 +83,7 @@ Button::Button(Texture2D _texture, float x, float y, float w, float h) : state(0
     center = {(width - position.x) / 2, (height - position.y) / 2}; // center or anchor of the texture
     rotation = 0;
     color = WHITE; // set color as white
+   
 }
 
 Button::~Button() {}

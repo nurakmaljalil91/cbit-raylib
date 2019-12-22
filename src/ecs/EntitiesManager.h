@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <vector>
+#include <algorithm>
 
 #include "Entity.h"
 // class Entity;
@@ -21,8 +22,9 @@ public:
     void Render(); // Render all the entities render
     void Clear();  // Clear all teh entities clear
 
-    void Init_New_Entities(); // Process new entities
-    void Queue_For_Removal(); // Process to remove entities
-};                            // class EntitiesManager
+    bool Inside(std::shared_ptr<Entity> entity); // Check if entity inside the manager
+    void Init_New_Entities();                    // Process new entities
+    void Queue_For_Removal();                    // Process to remove entities
+};                                               // class EntitiesManager
 
 #endif // ENTITIESMANAGER_H
